@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Estilos Generales
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #263238;
+    background:
+        linear-gradient(rgba(18, 26, 24, 0.90), rgba(18, 26, 24, 0.95)),
+        url("https://drive.google.com/thumbnail?id=1Drr81j9C1fDQtGG-_ZnM-ZdLCiLnEdSu&sz=w1600") center / cover fixed no-repeat;
+    min-height: 100vh;
+}
+
+/* Encabezado con imagen ilustrada */
+.encabezado {
+    background:
+        linear-gradient(180deg, rgba(15, 25, 22, 0.55) 0%, rgba(15, 25, 22, 0.88) 100%),
+        url("https://drive.google.com/thumbnail?id=1Drr81j9C1fDQtGG-_ZnM-ZdLCiLnEdSu&sz=w1600") center / cover no-repeat;
+    border-bottom: 4px solid #c59b27;
+    padding: 3.2rem 1rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.encabezado h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2.1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+.encabezado p {
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+    opacity: 0.95;
+}
+
+/* Contenedor Principal */
+.contenedor {
+    width: min(1200px, 95%);
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================================
+   Filtros (Grid limpio: 1 fila para búsqueda, 1 fila para los 3 filtros + botón)
+   ========================================================================== */
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1.5rem;
+}
+
+/* El buscador ocupa todo el ancho de la primera fila */
+.filtro-ancho {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+input,
+select,
+button {
+    height: 40px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #b0bec5;
+    border-radius: 5px;
+    font: inherit;
+    width: 100%;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #26433b;
+    box-shadow: 0 0 0 2px rgba(38, 67, 59, 0.2);
+}
+
+button {
+    width: auto;
+    min-width: 140px;
+    background: #26433b;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #1b312b;
+}
+
+/* ==========================================================================
+   Tabla de Resultados y Barra de Encabezados
+   ========================================================================== */
+#mensaje {
+    min-height: 1.5rem;
+    font-weight: bold;
+    color: #1f332d;
+    margin-bottom: 0.8rem;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Encabezado verde oscuro de la tabla */
+.tabla-contenedor th {
+    background-color: #26433b;
+    color: #ffffff;
+    padding: 0.85rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #1b312b;
+    vertical-align: middle;
+}
+
+.tabla-contenedor td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #f1f7f4;
+}
+
+/* Miniatura e imagen de la carta con zoom al pasar el cursor */
+.carta-img {
+    width: 65px;
+    height: 92px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+    display: block;
+}
+
+.carta-img:hover {
+    transform: scale(2.4);
+    z-index: 10;
+    position: relative;
+}
+
+.desc-sub {
+    display: block;
+    font-size: 0.8rem;
+    color: #546e7a;
+    margin-top: 0.2rem;
+}
+
+/* Etiquetas (Badges) unificadas */
+.badge-tipo,
+.badge-raza,
+.badge-stat {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.82rem;
+}
+
+.badge-tipo {
+    background: #263238;
+    color: #ffd54f;
+}
+
+.badge-raza {
+    background: #e8f0ed;
+    color: #1f332d;
+    border-radius: 12px;
+}
+
+.stat-ataque {
+    background: #fdecea;
+    color: #b71c1c;
+}
+
+.stat-costo {
+    background: #fff8e1;
+    color: #8d6e00;
+}
+
+/* Footer y Responsive */
+footer {
+    padding: 1.5rem;
+    text-align: center;
+    color: #cfd8dc;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .filtros {
+        grid-template-columns: 1fr;
+    }
+}

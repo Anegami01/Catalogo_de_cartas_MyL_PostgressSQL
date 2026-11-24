@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Mitos y Leyendas - Consulta PostgreSQL</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Catálogo de Cartas — Mitos y Leyendas</h1>
+    <p>Base de datos PostgreSQL local con 514 cartas consultadas mediante Express e INNER JOIN.</p>
+  </header>
+
+  <main class="contenedor">
+    <section class="filtros" aria-label="Filtros de cartas">
+      <label for="buscarNombre" class="filtro-ancho">Buscar por nombre o código
+        <input type="search" id="buscarNombre" placeholder="Ej.: Merlín, Vouivre, LPB4-016...">
+      </label>
+
+      <label for="filtroTipo">Tipo de Carta
+        <select id="filtroTipo">
+          <option value="">Todos los tipos</option>
+        </select>
+      </label>
+
+      <label for="filtroCategoria">Filtrar por Raza
+        <select id="filtroCategoria">
+          <option value="">Todas las razas</option>
+        </select>
+      </label>
+
+      <label for="filtroEdicion">Filtrar por Edición
+        <select id="filtroEdicion">
+          <option value="">Todas las ediciones</option>
+        </select>
+      </label>
+
+      <button type="button" id="limpiarFiltros">Limpiar filtros</button>
+    </section>
+
+    <p id="mensaje" role="status">Cargando cartas...</p>
+
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Carta</th>
+            <th>Nombre de la Carta</th>
+            <th>Tipo de Carta</th>
+            <th>Raza</th>
+            <th>Ataque</th>
+            <th>Costo</th>
+            <th>Edición</th>
+          </tr>
+        </thead>
+        <tbody id="tablaProductos"></tbody>
+      </table>
+    </div>
+    <nav aria-label="Paginación de cartas" class="d-flex justify-content-center my-4">
+      <ul class="pagination pagination-md" id="paginacion">
+      </ul>
+    </nav>
+  </main>
+
+  <footer>
+    <p>Proyecto local de consulta PostgreSQL + Express + Fetch() — Mitos y Leyendas TCG.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿# Dependencias de Node.js
+node_modules/
+Backend/node_modules/
+backend/node_modules/
+
+# Variables de entorno y credenciales (evita filtrar contraseñas)
+.env
+Backend/.env
+backend/.env
+
+# Archivos del sistema operativo y logs
+*.log
+.DS_Store
+Thumbs.db

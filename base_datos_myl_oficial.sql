@@ -1,13 +1,32 @@
 -- =============================================================================
--- REPOBLADO OFICIAL Y EXACTO DE 514 CARTAS DE MITOS Y LEYENDAS (PRIMER BLOQUE)
+-- BASE DE DATOS OFICIAL Y EXACTA DE 514 CARTAS DE MITOS Y LEYENDAS (PRIMER BLOQUE)
 -- Correspondencia 100% verificada entre imagen física y registro de base de datos
 -- =============================================================================
 
--- 1. Limpieza de tablas
+-- 1. Creación de tablas (necesario para bases de datos nuevas)
+CREATE TABLE IF NOT EXISTS demo_categorias (
+    categoria_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS demo_productos (
+    producto_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    tipo_carta VARCHAR(50),
+    ataque INT DEFAULT 0,
+    costo INT DEFAULT 0,
+    edicion VARCHAR(100),
+    descripcion TEXT,
+    precio NUMERIC(10,2) DEFAULT 0,
+    imagen_url TEXT,
+    categoria_id INT REFERENCES demo_categorias(categoria_id) ON DELETE CASCADE
+);
+
+-- 2. Limpieza de tablas (para reiniciar los IDs a 1 y evitar datos duplicados)
 TRUNCATE TABLE demo_productos RESTART IDENTITY CASCADE;
 TRUNCATE TABLE demo_categorias RESTART IDENTITY CASCADE;
 
--- 2. Insertar Categorias / Razas oficiales
+-- 3. Insertar Categorias / Razas oficiales
 INSERT INTO demo_categorias (nombre) VALUES
   ('Caballero'),
   ('Defensor'),
